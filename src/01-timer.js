@@ -1,5 +1,7 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
 let userSelectedDate;
 const daysEle = document.querySelector("span[data-days]");
 const hoursEle = document.querySelector("span[data-hours]");
@@ -9,6 +11,14 @@ const datepicker = document.querySelector("#datatime-picker");
 
 const button = document.querySelector('button[data-start]')
 button.disabled = true;
+
+window.alert = function(message) {
+  iziToast.info({
+    title: 'Information',
+    message: message,
+    position: 'topCenter'
+  });
+};
 
 const datapickerOptions = {
     enableTime: true,
@@ -79,7 +89,5 @@ function startCountdown() {
     secondsEle.textContent = addingZeroIfLessThenDobleDigits(seconds);
   }, 1000);
 }
-
-
 
 
